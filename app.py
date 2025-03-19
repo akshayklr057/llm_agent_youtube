@@ -1,16 +1,21 @@
-from smolagents import CodeAgent,DuckDuckGoSearchTool, HfApiModel,load_tool,tool
 import datetime
-import requests
 import pytz
+
+from dotenv import load_dotenv
+import requests
+from smolagents import CodeAgent, DuckDuckGoSearchTool, HfApiModel, load_tool, tool
 import yaml
-from tools.final_answer import FinalAnswerTool
 
 from Gradio_UI import GradioUI
+from tools.final_answer import FinalAnswerTool
+from tools.youtube_search import YouTubeAPITool
+
+load_dotenv(".env")
+
 
 # Below is an example of a tool that does nothing. Amaze us with your creativity !
 @tool
-def my_custom_tool(arg1:str, arg2:int)-> str: #it's import to specify the return type
-    #Keep this format for the description / args / args description but feel free to modify the tool
+def my_custom_tool(arg1: str, arg2: int) -> str:
     """A tool that does nothing yet 
     Args:
         arg1: the first argument
@@ -50,12 +55,18 @@ custom_role_conversions=None,
 # Import tool from Hub
 image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_code=True)
 
+# Web Search Tool
+web_search_tool = DuckDuckGoSearchTool()
+
+# YouTube Search Tool
+yt_search_tool = YouTubeAPITool(max_results=5)
+
 with open("prompts.yaml", 'r') as stream:
     prompt_templates = yaml.safe_load(stream)
     
 agent = CodeAgent(
     model=model,
-    tools=[final_answer], ## add your tools here (don't remove final answer)
+    tools=[final_answer, image_generation_tool, web_search_tool, yt_search_tool], ## add your tools here (don't remove final answer)
     max_steps=6,
     verbosity_level=1,
     grammar=None,

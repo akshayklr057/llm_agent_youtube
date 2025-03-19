@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -169,3 +170,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+=======
+# ENV
+.env
+
+# Gradio
+.gradio
+
+# PyCache
+__pycache__
+>>>>>>> ed6668b (Initial Commit)
