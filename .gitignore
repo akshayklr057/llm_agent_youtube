@@ -1,0 +1,8 @@
+# ENV
+.env
+
+# Gradio
+.gradio
+
+# PyCache
+__pycache__
