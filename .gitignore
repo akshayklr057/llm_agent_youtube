@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -171,6 +172,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 =======
+=======
+>>>>>>> youtube_agent_basic
 # ENV
 .env
 
@@ -178,5 +181,9 @@ cython_debug/
 .gradio
 
 # PyCache
+<<<<<<< HEAD
 __pycache__
 >>>>>>> ed6668b (Initial Commit)
+=======
+__pycache__
+>>>>>>> youtube_agent_basic
